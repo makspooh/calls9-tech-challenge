@@ -12,6 +12,8 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
-    "import/no-import-module-exports": "off"
+    "import/no-import-module-exports": "off",
+    "arrow-body-style": "off",
+    "react/function-component-definition": "off"
   }
 }

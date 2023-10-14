@@ -20,7 +20,7 @@ const MainPage = () => {
         <div className={styles.stories}>
           {stories.map((story, index) => {
             const { id } = story;
-            const imageClass = `image-${(index % 3) + 1}`;
+            const imageClass = `image-${(index % 4) + 1}`;
 
             return (
               <div key={id} className={styles.story}>

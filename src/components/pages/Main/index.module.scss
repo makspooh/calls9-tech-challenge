@@ -90,6 +90,10 @@
             display: block;
         }
     }
+
+    &-4 {
+        background: url("../../../assets/images/story-4.jpeg") center/cover;
+    }
 }
 
 @include tablet {
@@ -115,5 +119,17 @@
 
     .image {
         height: 160px;
+    }
+}
+
+@include desktop {
+    .container {
+        padding-top: 130px;
+    }
+
+    .stories {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px 80px;
+        padding: 20px 160px;
     }
 }

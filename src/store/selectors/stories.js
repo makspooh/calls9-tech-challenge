@@ -1,3 +1,3 @@
-const topStories = (state) => state.topStories.stories;
+const topStoriesSelector = (state) => state.topStories;
 
-export default topStories;
+export default topStoriesSelector;

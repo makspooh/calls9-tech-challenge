@@ -1,0 +1,32 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.link {
+    color: $grey-500;
+    text-decoration: none;
+    transition: all 0.15s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: pre-line;
+    @include font-bold-lg;
+
+    &:hover {
+        color: $grey-600;
+
+        .icon {
+            path {
+                fill: $grey-600;
+            }
+        }
+    }
+}
+
+.icon {
+    margin-right: 10px;
+
+    path {
+        fill: $grey-500;
+        transition: all 0.15s ease-out;
+    }
+}

@@ -22,18 +22,7 @@
     "lint": "eslint src/**/*.{js,}",
     "lint:fix": "eslint --fix src/**/*.{js,}",
     "format": "prettier --write src/**/*.{js,} --config .prettierrc.json",
-    "precommit": "lint-staged",
     "prepare": "husky install"
-  },
-  "lint-staged": {
-    "src/**/*.{js}": [
-      "eslint --fix"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm precommit"
-    }
   },
   "eslintConfig": {
     "extends": [
@@ -61,7 +50,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "lint-staged": "^14.0.1"
   }
 }

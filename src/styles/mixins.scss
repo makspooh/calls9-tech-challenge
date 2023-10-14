@@ -1,0 +1,76 @@
+@import "./variables.scss";
+
+// FONTS
+@mixin font-sm {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+@mixin font-base {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+@mixin font-lg {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin font-2xl {
+    font-size: 20px;
+    line-height: 28px;
+}
+
+@mixin font-medium-base {
+    @include font-base;
+    font-weight: 500;
+}
+
+@mixin font-medium-lg {
+    @include font-lg;
+    font-weight: 500;
+}
+
+@mixin font-bold-sm {
+    @include font-sm;
+    font-weight: 600;
+}
+
+@mixin font-bold-lg {
+    @include font-lg;
+    font-weight: 600;
+}
+
+@mixin font-bold-2xl {
+    @include font-2xl;
+    font-weight: 600;
+}
+
+@mixin font-regular-base {
+    @include font-base;
+    font-weight: 400;
+}
+
+@mixin mobile-md {
+    @media screen and (min-width: $mobile-md-width) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-width) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media screen and (min-width: $laptop-width) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-width) {
+        @content;
+    }
+}

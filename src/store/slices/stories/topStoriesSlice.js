@@ -14,8 +14,8 @@ const storiesSlice = createSlice({
     });
 
     builder.addCase(initTopStories.fulfilled, (state, action) => {
+      state.stories = action.payload;
       state.isLoading = false;
-      state.data = action.payload;
     });
 
     builder.addCase(initTopStories.rejected, (state, action) => {

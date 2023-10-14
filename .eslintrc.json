@@ -9,5 +9,9 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": { "react/react-in-jsx-scope": "off", "react/jsx-filename-extension": "off" }
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "import/no-import-module-exports": "off"
+  }
 }

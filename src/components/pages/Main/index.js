@@ -15,6 +15,8 @@ import Button from "../../shared/Button";
 
 import play from "../../../assets/images/play.png";
 import play2x from "../../../assets/images/play@2x.png";
+import web from "../../../assets/images/web.png";
+import web2x from "../../../assets/images/web@2x.png";
 
 import styles from "./index.module.scss";
 
@@ -152,6 +154,25 @@ const MainPage = () => {
 
           <Button type="submit" label="Post comment" />
         </form>
+
+        <div className={styles.findMore}>
+          <picture>
+            <source media="(min-width: 992px)" srcSet={web2x} />
+            <img src={web} alt="play" className={styles.web} />
+          </picture>
+
+          <p className={styles.findMore_text}>
+            Find out more at{" "}
+            <a
+              href="https://people.com"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.link}
+            >
+              www.people.com
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

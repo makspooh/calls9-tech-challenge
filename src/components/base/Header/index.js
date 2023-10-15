@@ -1,6 +1,6 @@
 import React from "react";
 
-import NAVIGATION from "../../../utils/constants/navigation";
+import { TOP_NAVIGATION } from "../../../utils/constants/navigation";
 
 import CustomLink from "../../shared/CustomLink";
 
@@ -20,8 +20,8 @@ const Header = () => {
       </CustomLink>
 
       <nav className={styles.nav}>
-        {Object.keys(NAVIGATION).map((routeKey) => {
-          const { path, label } = NAVIGATION[routeKey];
+        {Object.keys(TOP_NAVIGATION).map((routeKey) => {
+          const { path, label } = TOP_NAVIGATION[routeKey];
 
           return (
             <CustomLink key={label} to={path} className={styles.link}>

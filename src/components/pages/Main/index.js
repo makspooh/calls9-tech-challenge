@@ -8,6 +8,9 @@ import play from "../../../assets/images/play.png";
 import play2x from "../../../assets/images/play@2x.png";
 
 import styles from "./index.module.scss";
+import Tag from "./molecules/Tag";
+
+const TAGS = [{ name: "gaming" }, { name: "wow" }];
 
 const MainPage = () => {
   const { stories } = useSelector(topStoriesSelector);
@@ -44,6 +47,8 @@ const MainPage = () => {
                       libero.
                     </span>
                   </div>
+
+                  <div className={styles.story_tags}>{TAGS.map(Tag)}</div>
                 </div>
               </div>
             );

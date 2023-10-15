@@ -114,6 +114,31 @@
     box-sizing: border-box;
 }
 
+.findMore {
+    width: 100%;
+    background: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 80px 20px;
+    box-sizing: border-box;
+
+    &_text {
+        color: $grey-600;
+        @include font-bold-2xl;
+    }
+}
+
+.web {
+    width: 30px;
+}
+
+.link {
+    color: $blue;
+    text-decoration: none;
+}
+
 @include tablet {
     .container {
         padding-top: 90px;

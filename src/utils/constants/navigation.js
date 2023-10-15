@@ -1,4 +1,4 @@
-const NAVIGATION = {
+const TOP_NAVIGATION = {
   ABOUT_US: {
     path: "",
     label: "about us",
@@ -17,4 +17,15 @@ const NAVIGATION = {
   },
 };
 
-export default NAVIGATION;
+const BOTTOM_NAVIGATION = {
+  TERMS: {
+    path: "",
+    label: "Terms & Conditions",
+  },
+  POLICY: {
+    path: "",
+    label: "Privacy Policy",
+  },
+};
+
+export { TOP_NAVIGATION, BOTTOM_NAVIGATION };

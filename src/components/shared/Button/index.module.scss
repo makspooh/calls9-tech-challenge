@@ -1,0 +1,20 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.container {
+    padding: 10px 20px;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid $orange;
+    color: $orange;
+    cursor: pointer;
+    @include font-bold-sm;
+
+    &:hover,
+    &:focus {
+        background: $orange;
+        color: $white;
+    }
+}

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store/configureStore";
 
 import App from "./App";
+import ToastContainer from "./components/containers/ToastContainer";
 
 import "./styles/index.scss";
 
@@ -14,6 +15,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
+      <ToastContainer />
     </Provider>
   </React.StrictMode>,
 );

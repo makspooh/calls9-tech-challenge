@@ -1,19 +1,89 @@
+/* eslint-disable no-console */
 import classNames from "classnames";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 
-import topStoriesSelector from "../../../store/selectors/stories";
+import { topStoriesSelector } from "../../../store/selectors";
+import { validateComment } from "../../../utils/validation";
+import { addToast } from "../../../store/slices/toastSlice";
+import api from "../../../apiSingleton";
+
+import Tag from "./molecules/Tag";
+import TextArea from "../../shared/TextArea";
+import Button from "../../shared/Button";
 
 import play from "../../../assets/images/play.png";
 import play2x from "../../../assets/images/play@2x.png";
 
 import styles from "./index.module.scss";
-import Tag from "./molecules/Tag";
 
 const TAGS = [{ name: "gaming" }, { name: "wow" }];
 
 const MainPage = () => {
   const { stories } = useSelector(topStoriesSelector);
+
+  const [inputs, setInputs] = useState({ comment: { value: "", target: "" } });
+
+  const commentRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const handleStoryClick = (id) => {
+    setInputs((prev) => ({
+      ...prev,
+      comment: { ...prev.comment, target: id },
+    }));
+
+    if (commentRef.current) {
+      commentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleKeyDown = (e, id) => {
+    if (e.key === "Enter" || e.key === " ") {
+      handleStoryClick(id);
+    }
+  };
+
+  const handleInputChange = (value, valueKey) => {
+    setInputs((prev) => ({
+      ...prev,
+      [valueKey]: { ...prev[valueKey], value },
+    }));
+  };
+
+  const showToast = (message, type) => {
+    dispatch(
+      addToast({
+        message,
+        type,
+      }),
+    );
+  };
+
+  const handlePostComment = (e) => {
+    e.preventDefault();
+
+    validateComment({
+      data: inputs.comment,
+      onSuccess: () => {
+        const payload = {
+          by: "Just Me",
+          parent: inputs.comment.target,
+          text: inputs.comment.value,
+          time: new Date().getTime(),
+          type: "comment",
+        };
+
+        const response = api.stories.commentTop(payload);
+
+        console.log(response);
+
+        showToast("Success! Please check browser console", "success");
+      },
+      onError: (errors) => showToast(errors.value || errors.target, "error"),
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -26,7 +96,15 @@ const MainPage = () => {
             const imageClass = `image-${(index % 4) + 1}`;
 
             return (
-              <div key={id} className={styles.story}>
+              <div
+                key={id}
+                role="button"
+                tabIndex={0}
+                className={styles.story}
+                onClick={() => handleStoryClick(id)}
+                onTouchStart={() => handleStoryClick(id)}
+                onKeyDown={(e) => handleKeyDown(e, id)}
+              >
                 <div className={classNames(styles.image, styles[imageClass])}>
                   <picture>
                     <source media="(min-width: 992px)" srcSet={play2x} />
@@ -48,12 +126,32 @@ const MainPage = () => {
                     </span>
                   </div>
 
-                  <div className={styles.story_tags}>{TAGS.map(Tag)}</div>
+                  <div className={styles.story_tags}>
+                    {TAGS.map(({ name }) => (
+                      <Tag key={nanoid()} name={name} />
+                    ))}
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
+
+        <form
+          ref={commentRef}
+          className={styles.comment}
+          onSubmit={handlePostComment}
+        >
+          <TextArea
+            value={inputs.comment.value}
+            valueKey="comment"
+            label="Comment"
+            placeholder={`${inputs.comment.target} story comment`}
+            onChange={handleInputChange}
+          />
+
+          <Button type="submit" label="Post comment" />
+        </form>
       </div>
     </div>
   );

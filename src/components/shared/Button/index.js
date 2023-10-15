@@ -3,9 +3,16 @@ import PropTypes from "prop-types";
 
 import LoadingIndicator from "../LoadingIndicator";
 
+import styles from "./index.module.scss";
+
 const Button = ({ label, type, isDisabled, isLoading, onClick }) => {
   return (
-    <button type={type} disabled={isDisabled} onClick={onClick}>
+    <button
+      type={type}
+      className={styles.container}
+      disabled={isDisabled}
+      onClick={onClick}
+    >
       {isLoading ? <LoadingIndicator /> : <span>{label}</span>}
     </button>
   );

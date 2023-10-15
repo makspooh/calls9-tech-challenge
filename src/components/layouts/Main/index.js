@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import topStoriesSelector from "../../../store/selectors/stories";
+
+import { topStoriesSelector } from "../../../store/selectors";
 import initTopStories from "../../../store/services/stories";
 
 import Header from "../../base/Header";

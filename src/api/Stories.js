@@ -8,4 +8,10 @@ export default class UsersAPI extends Base {
   getTop(id) {
     return this.apiClient.get(`item/${id}.json`);
   }
+
+  commentTop(payload) {
+    this.commentPayload = payload;
+
+    return this.commentPayload;
+  }
 }

@@ -16,6 +16,7 @@
     "arrow-body-style": "off",
     "react/function-component-definition": "off",
     "react/prop-types": ["error", { "ignore": ["children"] }],
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   }
 }
